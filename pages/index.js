@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/home.module.css'
 import Link from 'next/link'
+import clientPromise from '../lib/mongodb'
 
-export default function Home() {
+export default function Home({ isConnected }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -53,16 +54,43 @@ export default function Home() {
           </a>
         </div>
       </main>
+        <footer className={styles.footer}>
+              {isConnected ? (
+                  <a className="subtitle">You are connected to MongoDB</a>
+              ) : (
+                  <a className="subtitle">
+                      You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
+                      for instructions.
+                  </a>
+              )}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://ionos.space"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by IONOS
-        </a>
-      </footer>
+        {/*<a*/}
+        {/*  href="https://ionos.space"*/}
+        {/*  target="_blank"*/}
+        {/*  rel="noopener noreferrer"*/}
+        {/*>*/}
+        {/*  Powered by IONOS*/}
+        {/*</a>*/}
+        </footer>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+    try {
+        // client.db() will be the default database passed in the MONGODB_URI
+        // You can change the database by calling the client.db() function and specifying a database like:
+        // const db = client.db("myDatabase");
+        // Then you can execute queries against your database like so:
+        // db.find({}) or any of the MongoDB Node Driver commands
+        await clientPromise
+        return {
+            props: { isConnected: true },
+        }
+    } catch (e) {
+        console.error(e)
+        return {
+            props: { isConnected: false },
+        }
+    }
 }
