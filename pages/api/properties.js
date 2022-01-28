@@ -1,5 +1,10 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import clientPromise from '../../lib/mongodb'
 
-export default (req, res) => {
-  res.status(200).json({ name: 'John Doe' })
+export default async function handler(req, res){
+  const client = await clientPromise;
+  const db = client.db("llotanuserdata");
+
+  const data = await db.collection("registers").find({}).toArray();
+
+  res.json(data);
 }

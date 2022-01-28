@@ -4,8 +4,6 @@ import Layout from '../../components/layout'
 import clientPromise from '../../lib/mongodb'
 
 export default function FirstPost({ accounts }) {
-    console.log(accounts);
-
     return (
         <Layout>
             <Head>
@@ -24,7 +22,7 @@ export default function FirstPost({ accounts }) {
             <div>
                 {accounts && accounts.map(account => (
                     <>
-                        <h2>{account.firstname}</h2>
+                        <h1 key="{account._id}">{account._id}</h1>
                     </>
                 ))}
             </div>
@@ -34,10 +32,12 @@ export default function FirstPost({ accounts }) {
 
 export async function getServerSideProps(context) {
 
-    const client = await clientPromise
+    const email = "root2@root2.de";
+
+    const client = await clientPromise;
     const db = client.db("llotanusersdb");
 
-    const data = await db.collection("posts").find({}).toArray()
+    const data = await db.collection("registers").find({email: email}).toArray();
 
     const accounts = JSON.parse(JSON.stringify(data));
 
