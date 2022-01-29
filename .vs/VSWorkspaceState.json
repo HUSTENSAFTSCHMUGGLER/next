@@ -2,12 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\components",
+    "\\lib",
     "\\pages",
     "\\pages\\api",
+    "\\pages\\api\\auth",
     "\\pages\\posts",
     "\\public",
     "\\styles"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\components\\btn.js",
   "PreviewInSolutionExplorer": false
 }

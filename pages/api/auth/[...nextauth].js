@@ -4,11 +4,11 @@ import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
 import RedditProvider from "next-auth/providers/reddit"
 import FacebookProvider from "next-auth/providers/facebook"
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
+import clientPromise from "../../../lib/mongodb"
 
 export default NextAuth({
-    session: {
-        jwt: true
-    },
+    adapter: MongoDBAdapter(clientPromise),
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
