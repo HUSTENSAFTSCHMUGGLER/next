@@ -31,13 +31,10 @@ export default function FirstPost({ accounts }) {
 }
 
 export async function getServerSideProps(context) {
-
-    const email = "root2@root2.de";
-
     const client = await clientPromise;
-    const db = client.db("llotanusersdb");
+    const db = client.db("posts");
 
-    const data = await db.collection("registers").find({email: email}).toArray();
+    const data = await db.collection("registers").find({}).toArray();
 
     const accounts = JSON.parse(JSON.stringify(data));
 
