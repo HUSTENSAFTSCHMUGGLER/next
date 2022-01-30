@@ -28,9 +28,6 @@ export default NextAuth({
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET
         })
     ],
-    pages: {
-        signIn: '/login'
-    },
     logger: {
         error(code, metadata) {
             log.error(code, metadata)
@@ -41,6 +38,9 @@ export default NextAuth({
         debug(code, metadata) {
             log.debug(code, metadata)
         }
+    },
+    pages: {
+        signIn: '/login'
     },
     database: process.env.MONGODB_URI
 })
