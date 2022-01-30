@@ -7,7 +7,7 @@ export default function Home({ isConnected }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>LLOTAN Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
