@@ -6,7 +6,6 @@ import RedditProvider from "next-auth/providers/reddit"
 import FacebookProvider from "next-auth/providers/facebook"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../lib/mongodb"
-import log from "logging-service"
 
 export default NextAuth({
     adapter: MongoDBAdapter(clientPromise),
@@ -28,17 +27,6 @@ export default NextAuth({
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET
         })
     ],
-    logger: {
-        error(code, metadata) {
-            log.error(code, metadata)
-        },
-        warn(code) {
-            log.warn(code)
-        },
-        debug(code, metadata) {
-            log.debug(code, metadata)
-        }
-    },
     pages: {
         signIn: '/login'
     },
