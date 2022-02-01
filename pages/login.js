@@ -8,25 +8,67 @@ const Login = ({ getProviders, getSession }) => {
         if(getSession) return Router.push('/')
     })
 
-    if (getSession) return null;
-    return (
-        <div className="d-flex justify-content-center align-items-center"
-        style={{ minHeight: '100vh' }}>
-            <div className="border border-1 max-auto p-4 shadow"
-            style={{ maxWidth: '450px', width: '100%' }}>
-                <h2 className="text-center fw-bolder"
-                style={{ color: '#555', letterSpacing: '1px'}}>
-                    LLOTAN
-                </h2>
+	if (getSession) return null;
 
-                <p className="text-center">Sign up to your Account</p>
+	const handleSignIn = (e) => {
+		const container = document.getElementById('container');
+		container.classList.remove("right-panel-active");
+	}
 
-                <BtnLogin getProviders={getProviders.google} bgColor='#1A73E9' />
-                <BtnLogin getProviders={getProviders.facebook} bgColor='#0404BE' />
-                <BtnLogin getProviders={getProviders.github} bgColor='#444222' />
-                <BtnLogin getProviders={getProviders.reddit} bgColor='#FF4500' />
-            </div>
-        </div>
+	const handleSignUp = (e) => {
+		const container = document.getElementById('container');
+		container.classList.add("right-panel-active");
+	}
+    
+	return (
+		<div class="container" id="container">
+			<div class="form-container sign-up-container">
+				<form action="#">
+					<h1>Create Account</h1>
+					<div class="social-container">
+						<BtnLogin getProviders={getProviders.google}/>
+						<BtnLogin getProviders={getProviders.facebook}/>
+						<BtnLogin getProviders={getProviders.github}/>
+						<BtnLogin getProviders={getProviders.reddit}/>
+					</div>
+					<span>or use your email for registration</span>
+					<input type="text" placeholder="Name" />
+					<input type="email" placeholder="Email" />
+					<input type="password" placeholder="Password" />
+					<button class="loginButton">Sign Up</button>
+				</form>
+			</div>
+			<div class="form-container sign-in-container">
+				<form action="#">
+					<h1>Sign in</h1>
+					<div class="social-container">
+						<BtnLogin getProviders={getProviders.google} btncontent="te1"/>
+						<BtnLogin getProviders={getProviders.facebook} btncontent="te2"/>
+						<BtnLogin getProviders={getProviders.github} btncontent="te3"/>
+						<BtnLogin getProviders={getProviders.reddit} btncontent="te4"/>
+					</div>
+					<span>or use your account</span>
+					<input type="email" placeholder="Email" />
+					<input type="password" placeholder="Password" />
+					<a href="#">Forgot your password?</a>
+					<button class="loginButton">Sign In</button>
+				</form>
+			</div>
+			<div class="overlay-container">
+				<div class="overlay">
+					<div class="overlay-panel overlay-left">
+						<h1>Welcome Back!</h1>
+						<p>To keep connected with us please login with your personal info</p>
+						<button class="loginButton ghost" onClick={handleSignIn} id="signIn">Sign In</button>
+					</div>
+					<div class="overlay-panel overlay-right">
+						<h1>Hello, Friend!</h1>
+						<p>Enter your personal details and start journey with us</p>
+						<button class="loginButton ghost" onClick={handleSignUp} id="signUp">Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div >
     )
 }
 

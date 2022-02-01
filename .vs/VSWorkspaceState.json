@@ -4,11 +4,10 @@
     "\\components",
     "\\lib",
     "\\pages",
-    "\\pages\\api",
     "\\pages\\api\\auth",
-    "\\pages\\posts",
     "\\public",
     "\\styles"
   ],
+  "SelectedNode": "\\components\\btn.js",
   "PreviewInSolutionExplorer": false
 }
