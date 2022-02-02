@@ -6,16 +6,12 @@ const BtnLogin = ({ getProviders, icon }) => {
     return (
         <div>
             <a
-                className="social loginext"
+                className="social loginext fontSize"
                 onClick={() => signIn(getProviders.id)}>
                 <FontAwesomeIcon icon={icon}/>
             </a>
         </div>
     )
-}
-
-BtnLogin.defaultProps = {
-    txtColor: '#EEE'
 }
 
 export default BtnLogin

@@ -4,10 +4,12 @@
     "\\components",
     "\\lib",
     "\\pages",
+    "\\pages\\api",
     "\\pages\\api\\auth",
+    "\\pages\\posts",
     "\\public",
     "\\styles"
   ],
-  "SelectedNode": "\\components\\btn.js",
+  "SelectedNode": "\\.env.local",
   "PreviewInSolutionExplorer": false
 }

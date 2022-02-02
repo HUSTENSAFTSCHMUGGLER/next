@@ -74,6 +74,10 @@ button {
         border-color: #FFFFFF;
     }
 
+.fontSize {
+    font-size: 40px;
+}
+
 form {
     background-color: #FFFFFF;
     display: flex;
