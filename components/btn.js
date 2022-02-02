@@ -1,13 +1,14 @@
 import React from 'react'
 import { signIn } from 'next-auth/react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const BtnLogin = ({ getProviders, btncontent }) => {
+const BtnLogin = ({ getProviders, icon }) => {
     return (
         <div>
             <a
-                class="social"
-                onClick={() => signIn(getProviders.id)}
-                value={() => btncontent}>
+                className="social loginext"
+                onClick={() => signIn(getProviders.id)}>
+                <FontAwesomeIcon icon={icon}/>
             </a>
         </div>
     )
