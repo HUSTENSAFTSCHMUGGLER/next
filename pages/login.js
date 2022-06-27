@@ -3,6 +3,7 @@ import { getProviders, getSession } from 'next-auth/react'
 import BtnLogin from '../components/btn'
 import Router from 'next/router'
 import $ from 'jquery'
+import Head from 'next/head'
 
 //ICONS
 import { faGooglePlus, faFacebook, faGithub, faReddit } from '@fortawesome/free-brands-svg-icons'
@@ -24,6 +25,11 @@ const Login = ({ getProviders, getSession }) => {
     
 	return (
 		<>
+		      <Head>
+        		<title>LLOTAN - Login</title>
+        		<link rel="icon" href="/favicon.ico" />
+		      </Head>
+
 			<div className="container" id="container">
 				<div className="form-container sign-up-container">
 					<form action="#">
