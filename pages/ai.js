@@ -41,7 +41,7 @@ export default function Home({ isConnected }) {
       model: "text-davinci-002",
       prompt: phrase,
       temperature: 0.7,
-      max_tokens: 125,
+      max_tokens: 256,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
@@ -64,6 +64,10 @@ export default function Home({ isConnected }) {
     document.getElementById('textInput').value = "";
   }
 
+  const handleCopy = (e) =>  {
+    navigator.clipboard.writeText(document.getElementById("mainText").innerText)
+  }
+
   const keyDown = (e) =>  {
     if (e.keyCode == 13) { 
       handleClick();
@@ -74,6 +78,7 @@ export default function Home({ isConnected }) {
     document.getElementById("loader").style.display = "none";
     document.getElementById("mainDiv").style.display = "block";
     document.getElementById("secondaryButton").style.display = "block";
+    document.getElementById("copyButton").style.display = "block";
   }
 
   function showLoader() {
@@ -90,6 +95,7 @@ export default function Home({ isConnected }) {
         <div className={styles.buttonscontainer}>
           <button type="submit" onClick={handleClick}>Submit</button>
           <button id="secondaryButton" className={styles.secondaryButton} type="submit" onClick={handleSecondClick}>Retry</button>
+          <button id="copyButton" className={styles.copyButton} type="submit" onClick={handleCopy}>copy</button>
         </div>
       </div>
     </div>

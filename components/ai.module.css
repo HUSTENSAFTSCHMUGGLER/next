@@ -8,6 +8,11 @@
     display: none;
 }
 
+.copyButton {
+    margin-left: 10px;
+    display: none;
+}
+
 /* Center the loader */
 .loader {
     position: absolute;
