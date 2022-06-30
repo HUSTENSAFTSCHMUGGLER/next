@@ -70,9 +70,9 @@ export default function Home({ isConnected }) {
   }
   const handleTranslateClick = (e) =>  {
     if(document.getElementById('textInput').value == "") {
-      doAiStuff("Translate to german: " + document.getElementById("textInput").innerText);
-    } else {
       doAiStuff("Translate to german: " + document.getElementById("mainText").innerText);
+    } else {
+      doAiStuff("Translate to german: " + document.getElementById("textInput").innerText);
     }
 
   }
