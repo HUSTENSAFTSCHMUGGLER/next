@@ -1,16 +1,41 @@
 .mainDiv{
-    margin: 100px;
-    display: block;
+  margin: 100px;
+  display: block;
 }
 
 .secondaryButton {
-    margin-left: 10px;
-    display: none;
+  margin-left: 10px;
+  display: none;
 }
 
 .copyButton {
-    margin-left: 10px;
-    display: none;
+  margin-left: 10px;
+  display: none;
+}
+
+.translateButton {
+  display: none;
+}
+
+.imageButton {
+  margin-left: 10px;
+}
+
+.translationCheckbox {
+  margin-left: 10px;
+  width: 15px;
+}
+
+.checkboxText {
+  margin-left: 4px;
+  margin-top: 30px;
+}
+
+.mainText {
+  white-space: pre-wrap;
+  padding-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
 }
 
 /* Center the loader */
@@ -64,3 +89,12 @@
     flex-direction: row;
     flex-wrap: wrap; 
 }
+
+.translationCheckboxContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  margin-top: -4px;
+  display: none;
+}
+

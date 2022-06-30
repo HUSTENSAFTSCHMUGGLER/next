@@ -17,6 +17,7 @@
     "axios": "^0.25.0",
     "express-jwt": "^6.1.0",
     "fs": "0.0.1-security",
+    "highlight.js": "^11.5.1",
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
     "mongodb": "^4.3.1",

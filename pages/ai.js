@@ -1,14 +1,18 @@
 ﻿import { Configuration, OpenAIApi } from "openai";
 import styles from './../components/ai.module.css';
+import hljs from "highlight.js";
 
+//Configuration for the OpenAI Api module
 const configuration = new Configuration({
+  //Remove and uncomment the code bellow when going Viral
   apiKey: "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",
+  //apiKey: process.env.OPEN_AI_KEY,
 });
 
 export default function Home({ isConnected }) {
+  //Make logs to the console
   console.log("Hey there 👋");
   console.log("Welcome to the console 😎");
-
   console.log(`
 
 
@@ -32,73 +36,110 @@ export default function Home({ isConnected }) {
 
   `)
 
-  var phrase = "";
+  //The inputtet text
+  var inputText;
 
-  async function doAiStuff() {
+  //Communication with the server
+  async function doAiStuff(phrase) {
+    showLoader();
+
     const openai = new OpenAIApi(configuration);
     
     const response = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: phrase,
-      temperature: 0.7,
-      max_tokens: 125,
+      temperature: 0,
+      max_tokens: 1000,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
+      best_of: 6
     });
-
-    document.getElementById("mainText").innerText = response.data.choices[0].text.trim();
+    
+    formattextanddisplay(response.data.choices[0].text.trimLeft());
     showPage();
   }
-  
+
+  //Format the text
+  function formattextanddisplay(response) {
+    document.getElementById('textInput').value = "";
+    document.getElementById("mainText").textContent = response;
+    
+    if(response.length > 150) {
+      document.getElementById("mainText").style.fontSize = "14px";
+    } else if (response.length > 70) {
+      document.getElementById("mainText").style.fontSize = "20px";
+    } else {
+      document.getElementById("mainText").style.fontSize = "2em";
+    }
+
+    if(response.toString().includes('{')) { 
+      hljs.highlightAll();
+    } else {
+      document.getElementById("mainText").classList.remove("hljs");
+    }
+  }
+
+  //Key and Button event handlers
   const handleClick = (e) =>  {
-    showLoader();
-    phrase = document.getElementById('textInput').value;
-    doAiStuff();
-    document.getElementById('textInput').value = "";
+    inputText = document.getElementById('textInput').value;
+    doAiStuff(inputText);
   }
-
-  const handleSecondClick = (e) =>  {
-    showLoader();
-    doAiStuff();
-    document.getElementById('textInput').value = "";
+  const handleRetryClick = (e) =>  {
+    doAiStuff(inputText);
   }
-
-  const handleCopy = (e) =>  {
-    navigator.clipboard.writeText(document.getElementById("mainText").innerText)
+  const handleCopyClick = (e) =>  {
+    navigator.clipboard.writeText(document.getElementById("mainText").innerText);
   }
+  const handleTranslateClick = (e) =>  {
+    if(document.getElementById('textInput').value == "") {
+      doAiStuff("Translate to german: " + document.getElementById("textInput").innerText);
+    } else {
+      doAiStuff("Translate to german: " + document.getElementById("mainText").innerText);
+    }
 
+  }
   const keyDown = (e) =>  {
     if (e.keyCode == 13) { 
       handleClick();
     }
   }
 
+  //Loading Circle CSS functions
   function showPage() {
     document.getElementById("loader").style.display = "none";
     document.getElementById("mainDiv").style.display = "block";
     document.getElementById("secondaryButton").style.display = "block";
-    document.getElementById("copyButton").style.display = "block";
+    document.getElementById("copyButton").style.display = "block"; 
+    document.getElementById("translateButton").style.display = "block";
   }
-
   function showLoader() {
     document.getElementById("loader").style.display = "block";
     document.getElementById("mainDiv").style.display = "none";
   }
 
+  //HTML
   return (
     <div id="container">
       <div id="loader" className={styles.loader}></div>
       <div id="mainDiv" className={styles.mainDiv}>
-        <h1 id="mainText">Wating for the Response</h1>
+        <pre>
+          <code id="mainText" className={styles.mainText}>
+            What do you want to know?
+          </code>
+        </pre>
         <input type="text" onKeyDown={keyDown} id="textInput"></input>
         <div className={styles.buttonscontainer}>
           <button type="submit" onClick={handleClick}>Submit</button>
-          <button id="secondaryButton" className={styles.secondaryButton} type="submit" onClick={handleSecondClick}>Retry</button>
-          <button id="copyButton" className={styles.copyButton} type="submit" onClick={handleCopy}>copy</button>
+          <button id="secondaryButton" className={styles.secondaryButton} type="submit" onClick={handleRetryClick}>Retry</button>
+          <button id="copyButton" className={styles.copyButton} type="submit" onClick={handleCopyClick}>Copy</button>
+          <button id="translateButton" className={styles.translateButton} type="submit" onClick={handleTranslateClick}>Translate to German</button>
+          <div className={styles.translationCheckboxContainer}>
+            <input type="checkbox" className={styles.translationCheckbox} id="translationCheckbox"></input>
+            <p className={styles.checkboxText}>Deutsch</p>
+          </div>
         </div>
       </div>
     </div>
-
   )
 }

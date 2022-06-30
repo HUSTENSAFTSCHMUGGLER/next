@@ -1,5 +1,6 @@
 ﻿import '../styles/globals.css'
 import '../styles/Login.css'
+import "./../highlight/styles/atom-one-dark.min.css"
 import { SessionProvider } from 'next-auth/react'
 import Head from 'next/head'
 
