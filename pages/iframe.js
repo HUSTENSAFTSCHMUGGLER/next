@@ -1,4 +1,4 @@
-﻿import styles from './../components/dalle.module.css';
+﻿import styles from './../components/iframe.module.css';
 export default function Home({ isConnected }) {
   console.log("Hey there 👋");
   console.log("Welcome to the console 😎");
