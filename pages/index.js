@@ -25,12 +25,12 @@ export default function Home({ isConnected }) {
     const response = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: phrase,
-      temperature: 0,
-      max_tokens: 1000,
+      temperature: 0.7,
+      max_tokens: 256,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
-      best_of: 6
+      best_of: 1
     });
     
     formattextanddisplay(response.data.choices[0].text.trimLeft());
