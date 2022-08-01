@@ -102,7 +102,6 @@ input {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: relative;
     overflow: hidden;
-    width: 768px;
     max-width: 100%;
     min-height: 480px;
     margin: 20px;
@@ -256,3 +255,20 @@ footer {
         color: #3c97bf;
         text-decoration: none;
     }
+
+@media only screen and (max-width: 500px) {
+    #mainText {
+        font-size: 20%;
+    }
+
+    button {
+        font-size: 10px;
+        padding: 12px 30px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #mainText {
+        font-size: 15%;
+    }
+}
