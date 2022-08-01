@@ -102,7 +102,7 @@ input {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: relative;
     overflow: hidden;
-    max-width: 100%;
+    width: clamp(350px, 90vw, 768px);
     min-height: 480px;
     margin: 20px;
 }
@@ -256,27 +256,18 @@ footer {
         text-decoration: none;
     }
 
-@media only screen and (max-width: 500px) {
-    #mainText {
-        font-size: 200%;
-    }
-
-    button {
-        font-size: 10px;
-        padding: 12px 30px;
-    }
-
-    #mainDiv {
-        margin: 50px;
-    }
+#mainText {
+    font-size: clamp(15px, 2vw, 30px);
 }
 
-@media only screen and (max-width: 400px) {
-    #mainText {
-        font-size: 150%;
-    }
+#mainDiv {
+    margin: clamp(20px, 7vw, 100px);
+}
 
-    #mainDiv {
-        margin: 20px;
-    }
+button {
+    margin: 10px;
+    font-size: clamp(10px, 0.6rem, 12px);
+    padding: 12px, 0;
+    padding-left: clamp(10px, 4vw, 45px);
+    padding-right: clamp(10px, 4vw, 45px);
 }
