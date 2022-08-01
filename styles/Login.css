@@ -258,17 +258,25 @@ footer {
 
 @media only screen and (max-width: 500px) {
     #mainText {
-        font-size: 20%;
+        font-size: 200%;
     }
 
     button {
         font-size: 10px;
         padding: 12px 30px;
     }
+
+    #mainDiv {
+        margin: 50px;
+    }
 }
 
 @media only screen and (max-width: 400px) {
     #mainText {
-        font-size: 15%;
+        font-size: 150%;
+    }
+
+    #mainDiv {
+        margin: 20px;
     }
 }
