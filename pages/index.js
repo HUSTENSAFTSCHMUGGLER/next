@@ -91,7 +91,7 @@ export default function Home({ isConnected }) {
     navigator.clipboard.writeText(document.getElementById("mainText").innerText);
   }
   const handleTranslateClick = (e) =>  {
-    if ($(".mbsc-textfield").value == "") {
+    if ($(".mbsc-textfield")[0].attributes[1].textContent == "") {
       doAiStuff("Repeat the folowing sentence: Please select a country first before trying to translate");
     } else {
       if($("#textInput")[0].value == "") {
@@ -110,12 +110,14 @@ export default function Home({ isConnected }) {
   //Loading Circle CSS functions
   function showPage() {
     $("#loaderContainer").css("display", "none");
+    $("#loader").css("display", "none");
     $("#mainDiv").css("display", "block");
     $("#copyButton").css("display", "block");
     $("#translateButton").css("display", "block");
   }
   function showLoader() {
     $("#loaderContainer").css("display", "flex");
+    $("#loader").css("display", "block");
     $("#mainDiv").css("display", "none");
   }
 
