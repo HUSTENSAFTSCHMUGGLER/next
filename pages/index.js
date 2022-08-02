@@ -71,6 +71,11 @@ export default function Home({ isConnected }) {
 
   useEffect(() => {
     $(".mbsc-textfield-inner-box").on("click", (e) => {
+      $(".mbsc-scroller-wheel-item").on("click", (e) => {
+        language = e.currentTarget.innerText;
+        if(language.search("TRIAL") != -1) language = language.replace("TRIAL\n", "");
+        $("#translateButton")[0].textContent = `Translate to ${language}`;
+      })
       $(".mbsc-popup-button-primary").on("click", (e) => {
         language = $(".mbsc-selected")[1].parentElement.outerText;
         if(language.search("TRIAL") != -1) language = language.replace("TRIAL\n", "");
@@ -90,9 +95,9 @@ export default function Home({ isConnected }) {
       doAiStuff("Repeat the folowing sentence: Please select a country first before trying to translate");
     } else {
       if($("#textInput")[0].value == "") {
-        doAiStuff(`Translate the text after the colon into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#mainText")[0].lastChild.textContent}`);
+        doAiStuff(`Translate following into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#mainText")[0].lastChild.textContent}`);
       } else {
-        doAiStuff(`Translate the text after the colon into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#textInput")[0].value}`);
+        doAiStuff(`Translate following into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#textInput")[0].value}`);
       }
     }
   }
