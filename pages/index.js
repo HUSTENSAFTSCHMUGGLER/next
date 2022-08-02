@@ -3,7 +3,12 @@ import Link from 'next/link'
 import clientPromise from '../lib/mongodb'
 import { Configuration, OpenAIApi } from "openai";
 import styles from './../components/ai.module.css';
+import { languages } from './../components/languages.js';
+import $ from 'jquery'
 import hljs from "highlight.js";
+import { useEffect } from 'react';
+import { Select } from "@mobiscroll/react";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 //Configuration for the OpenAI Api module
 const configuration = new Configuration({
@@ -57,11 +62,24 @@ export default function Home({ isConnected }) {
     }
   }
 
-  //Key and Button event handlers
+  //Event handlers
   const handleClick = (e) =>  {
     inputText = document.getElementById('textInput').value;
     doAiStuff(inputText);
   }
+
+  useEffect(() => {
+    setLanguages();
+  })
+
+  const setLanguages = () => {
+    //document.getElementById("translateButton").innerText = `Translate to ${document.getElementById("language").value}`;
+  }
+
+  const languagesSelector = () => {
+    setLanguages();
+  };
+
   const handleRetryClick = (e) =>  {
     doAiStuff(inputText);
   }
@@ -70,11 +88,10 @@ export default function Home({ isConnected }) {
   }
   const handleTranslateClick = (e) =>  {
     if(document.getElementById('textInput').value == "") {
-      doAiStuff("Translate to german: " + document.getElementById("mainText").innerText);
+      doAiStuff(`Translate the folowing into the ${document.getElementById("language").value} language: ` + document.getElementById("mainText").innerText);
     } else {
-      doAiStuff("Translate to german: " + document.getElementById("textInput").innerText);
+      doAiStuff(`Translate the folowing into the ${document.getElementById("language").value} language: ` + document.getElementById("textInput").value);
     }
-
   }
   const keyDown = (e) =>  {
     if (e.keyCode == 13) { 
@@ -95,6 +112,8 @@ export default function Home({ isConnected }) {
     document.getElementById("mainDiv").style.display = "none";
   }
 
+
+
   //HTML
   return (
     <div id="container">
@@ -114,11 +133,24 @@ export default function Home({ isConnected }) {
           <button type="submit" onClick={handleClick}>Submit</button>
           <button id="secondaryButton" className={styles.secondaryButton} type="submit" onClick={handleRetryClick}>Retry</button>
           <button id="copyButton" className={styles.copyButton} type="submit" onClick={handleCopyClick}>Copy</button>
-          <button id="translateButton" className={styles.translateButton} type="submit" onClick={handleTranslateClick}>Translate to German</button>
-          <div className={styles.translationCheckboxContainer}>
-            <input type="checkbox" className={styles.translationCheckbox} id="translationCheckbox"></input>
-            <p className={styles.checkboxText}>Deutsch</p>
-          </div>
+          <button id="translateButton" className={styles.translateButton} type="submit" onClick={handleTranslateClick}>Translate</button>
+          <Select onChange={languagesSelector} data={languages} label="Countries" filter={true} theme="ios" themeVariant="light"
+            responsive={{
+              xsmall: {
+                  display: 'bottom',
+                  touchUi: true
+              },
+              small: {
+                  display: 'anchored',
+                  touchUi: true
+              },
+              custom: { // Custom breakpoint
+                  breakpoint: 800,
+                  display: 'anchored',
+                  touchUi: false
+              }
+            }}
+          />
         </div>
       </div>
     </div>

@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }) {
 
 
     `)
+
     return (
         <SessionProvider>
             <Head>

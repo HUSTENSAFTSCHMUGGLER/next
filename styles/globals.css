@@ -63,3 +63,17 @@ button:hover {
         flex-direction: row;
     }
 }
+
+.mbsc-scroller-wheel-item {
+   position: inherit !important;
+}
+
+.mbsc-material.mbsc-textfield-wrapper {
+    border-radius: 20px;
+    margin: 0px 0px !important;
+    font-size: clamp(10px, 0.8rem, 12px);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: clamp(10px, 4vw, 35px);
+    padding-right: clamp(10px, 4vw, 35px);
+}
