@@ -261,6 +261,7 @@ footer {
 
 #mainText {
     font-size: clamp(20px, 2vw, 30px);
+    margin: 5px;
 }
 
 #mainDiv {

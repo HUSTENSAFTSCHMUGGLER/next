@@ -69,16 +69,27 @@ export default function Home({ isConnected }) {
   }
 
   useEffect(() => {
-    setLanguages();
+    $(".mbsc-textfield-inner-box").on("click", (e) => {
+      $(".mbsc-popup-button-primary").on("click", (e) => {
+        let language = $(".mbsc-selected")[1].parentElement.outerText;
+        if(language.search("TRIAL") != -1) language = language.replace("TRIAL\n", "");
+        console.log(language);
+        $("#translateButton").textContent = `Translate to ${language}`;
+      });
+    });
+
+
+
+    //
+
+/*     document.addEventListener("click", (e) => {
+      if(e.srcElement.childNodes[0] && e.srcElement.childNodes[0].textContent == "Set") {
+        console.log($(".mbsc-textfield").value);
+        console.log($(".mbsc-selected").textContent);
+        $("#translateButton").textContent = `Translate to ${$(".mbsc-textfield").value}`;
+      }
+    }); */
   })
-
-  const setLanguages = () => {
-    //document.getElementById("translateButton").innerText = `Translate to ${document.getElementById("language").value}`;
-  }
-
-  const languagesSelector = () => {
-    setLanguages();
-  };
 
   const handleRetryClick = (e) =>  {
     doAiStuff(inputText);
@@ -87,10 +98,14 @@ export default function Home({ isConnected }) {
     navigator.clipboard.writeText(document.getElementById("mainText").innerText);
   }
   const handleTranslateClick = (e) =>  {
-    if(document.getElementById('textInput').value == "") {
-      doAiStuff(`Translate the folowing into the ${document.getElementById("language").value} language: ` + document.getElementById("mainText").innerText);
+    if ($(".mbsc-textfield").value == "") {
+      doAiStuff("Repeat the folowing sentence: Please select a country first before trying to translate");
     } else {
-      doAiStuff(`Translate the folowing into the ${document.getElementById("language").value} language: ` + document.getElementById("textInput").value);
+      if(document.getElementById('textInput').value == "") {
+        doAiStuff(`Translate the folowing into the ${$(".mbsc-textfield").value} language: ` + document.getElementById("mainText").innerText);
+      } else {
+        doAiStuff(`Translate the folowing into the ${$(".mbsc-textfield").value} language: ` + document.getElementById("textInput").value);
+      }
     }
   }
   const keyDown = (e) =>  {
@@ -128,29 +143,33 @@ export default function Home({ isConnected }) {
             What do you want to know?
           </code>
         </pre>
-        <input type="text" onKeyDown={keyDown} id="textInput"></input>
+        <div id="inputbox">
+          <input type="text" onKeyDown={keyDown} id="textInput"></input>
+        </div>
         <div id="button-container" className={styles.buttonscontainer}>
           <button type="submit" onClick={handleClick}>Submit</button>
           <button id="secondaryButton" className={styles.secondaryButton} type="submit" onClick={handleRetryClick}>Retry</button>
           <button id="copyButton" className={styles.copyButton} type="submit" onClick={handleCopyClick}>Copy</button>
           <button id="translateButton" className={styles.translateButton} type="submit" onClick={handleTranslateClick}>Translate</button>
-          <Select onChange={languagesSelector} data={languages} label="Countries" filter={true} theme="ios" themeVariant="light"
-            responsive={{
-              xsmall: {
-                  display: 'bottom',
-                  touchUi: true
-              },
-              small: {
-                  display: 'anchored',
-                  touchUi: true
-              },
-              custom: { // Custom breakpoint
-                  breakpoint: 800,
-                  display: 'anchored',
-                  touchUi: false
-              }
-            }}
-          />
+          <div id="languagesSelector">
+            <Select id="languages" data={languages} label="Countries" filter={true} theme="material" themeVariant="light"
+              responsive={{
+                xsmall: {
+                    display: 'bottom',
+                    touchUi: true
+                },
+                small: {
+                    display: 'anchored',
+                    touchUi: true
+                },
+                custom: { // Custom breakpoint
+                    breakpoint: 800,
+                    display: 'anchored',
+                    touchUi: false
+                }
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

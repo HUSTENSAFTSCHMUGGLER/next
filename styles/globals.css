@@ -15,14 +15,6 @@ a {
     text-decoration: none;
 }
 
-input {
-    background-color: #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 100%;
-}
-
 a {
     color: #333;
     font-size: 14px;
@@ -68,12 +60,45 @@ button:hover {
    position: inherit !important;
 }
 
-.mbsc-material.mbsc-textfield-wrapper {
+.mbsc-material.mbsc-textfield-box.mbsc-select {
     border-radius: 20px;
-    margin: 0px 0px !important;
-    font-size: clamp(10px, 0.8rem, 12px);
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: clamp(10px, 4vw, 35px);
-    padding-right: clamp(10px, 4vw, 35px);
+    background: #eee !important;
+}
+
+.mbsc-material.mbsc-textfield-inner-box {
+    background: white !important;
+    border-radius: 20px;
+}
+
+.mbsc-material.mbsc-label-box-floating.mbsc-ltr, 
+.mbsc-material.mbsc-label-outline-floating.mbsc-ltr {
+    font-size: clamp(10px, 0.8rem, 12px) !important;
+}
+
+.mbsc-material.mbsc-select-icon-floating {
+    top: 1.4em !important;
+}
+
+.mbsc-textfield-ripple {
+    display: none;
+}
+
+#languagesSelector {
+    margin: 5px;
+}
+
+.mbsc-material.mbsc-textfield-wrapper {
+    margin: 0px !important;
+}
+
+#inputbox {
+    margin: 0 5px;
+}
+
+.mbsc-material.mbsc-select.mbsc-ltr {
+    height: 38px !important;
+}
+
+.mbsc-material.mbsc-label-box-floating {
+    top: 0.9em !important;
 }
