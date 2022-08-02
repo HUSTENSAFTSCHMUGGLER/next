@@ -102,9 +102,12 @@ input {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: relative;
     overflow: hidden;
-    width: clamp(350px, 90vw, 768px);
+    width: clamp(150px, 90vw, 768px);
     min-height: 480px;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .form-container {
@@ -257,17 +260,18 @@ footer {
     }
 
 #mainText {
-    font-size: clamp(15px, 2vw, 30px);
+    font-size: clamp(20px, 2vw, 30px);
 }
 
 #mainDiv {
-    margin: clamp(20px, 7vw, 100px);
+    margin: clamp(20px, 7vw, 80px);
 }
 
 button {
-    margin: 10px;
+    margin: 5px 5px;
     font-size: clamp(10px, 0.6rem, 12px);
-    padding: 12px, 0;
-    padding-left: clamp(10px, 4vw, 45px);
-    padding-right: clamp(10px, 4vw, 45px);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: clamp(10px, 4vw, 35px);
+    padding-right: clamp(10px, 4vw, 35px);
 }

@@ -1,20 +1,17 @@
 .mainDiv{
-  margin: 100px;
   display: block;
 }
 
 .secondaryButton {
-  margin-left: 10px;
   display: none;
 }
 
 .copyButton {
-  margin-left: 10px;
   display: none;
 }
 
 .translateButton {
-  display: none;
+  display: block;
 }
 
 .imageButton {

@@ -26,7 +26,7 @@ export default function Home({ isConnected }) {
       model: "text-davinci-002",
       prompt: phrase,
       temperature: 0.7,
-      max_tokens: 256,
+      max_tokens: 1000,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
@@ -110,7 +110,7 @@ export default function Home({ isConnected }) {
           </code>
         </pre>
         <input type="text" onKeyDown={keyDown} id="textInput"></input>
-        <div className={styles.buttonscontainer}>
+        <div id="button-container" className={styles.buttonscontainer}>
           <button type="submit" onClick={handleClick}>Submit</button>
           <button id="secondaryButton" className={styles.secondaryButton} type="submit" onClick={handleRetryClick}>Retry</button>
           <button id="copyButton" className={styles.copyButton} type="submit" onClick={handleCopyClick}>Copy</button>

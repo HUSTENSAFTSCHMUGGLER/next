@@ -50,3 +50,16 @@ button:hover {
     opacity: .8;
     cursor: pointer;
   }
+
+#button-container {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 500px) {
+    #button-container {
+        flex-direction: row;
+    }
+}
