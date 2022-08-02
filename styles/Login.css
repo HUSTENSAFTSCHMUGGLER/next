@@ -96,6 +96,18 @@ input {
     width: 100%;
 }
 
+#secondaryButton {
+    display: none;
+}
+
+#copyButton {
+    display: none;
+}
+  
+#translateButton {
+    display: block;
+}
+
 .container {
     background-color: #fff;
     border-radius: 10px;
@@ -269,6 +281,11 @@ footer {
 
 #textDiv {
     margin: 5px;
+}
+
+#loaderContainer {
+    height: 400px;
+    display: none;
 }
 
 button {

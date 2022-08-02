@@ -109,15 +109,14 @@ export default function Home({ isConnected }) {
 
   //Loading Circle CSS functions
   function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("mainDiv").style.display = "block";
-    //document.getElementById("secondaryButton").style.display = "block";
-    document.getElementById("copyButton").style.display = "block"; 
-    document.getElementById("translateButton").style.display = "block";
+    $("#loaderContainer").css("display", "none");
+    $("#mainDiv").css("display", "block");
+    $("#copyButton").css("display", "block");
+    $("#translateButton").css("display", "block");
   }
   function showLoader() {
-    document.getElementById("loader").style.display = "block";
-    document.getElementById("mainDiv").style.display = "none";
+    $("#loaderContainer").css("display", "flex");
+    $("#mainDiv").css("display", "none");
   }
 
   //HTML
@@ -127,7 +126,9 @@ export default function Home({ isConnected }) {
         <title>LLOTAN AI</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div id="loader" className={styles.loader}></div>
+      <div id="loaderContainer">
+        <div id="loader" className={styles.loader}></div>
+      </div>
       <div id="mainDiv" className={styles.mainDiv}>
         <div id="textDiv">
           <pre>
