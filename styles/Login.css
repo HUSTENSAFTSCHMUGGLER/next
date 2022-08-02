@@ -261,16 +261,20 @@ footer {
 
 #mainText {
     font-size: clamp(20px, 2vw, 30px);
-    margin: 5px;
 }
 
 #mainDiv {
     margin: clamp(20px, 7vw, 80px);
 }
 
+#textDiv {
+    margin: 5px;
+}
+
 button {
     margin: 5px 5px;
     font-size: clamp(10px, 0.6rem, 12px);
+    height: 38px;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: clamp(10px, 4vw, 35px);

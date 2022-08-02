@@ -19,7 +19,8 @@ const configuration = new Configuration({
 
 export default function Home({ isConnected }) {
   //The inputtet text
-  var inputText;
+  let inputText;
+  let language; 
 
   //Communication with the server
   async function doAiStuff(phrase) {
@@ -45,7 +46,7 @@ export default function Home({ isConnected }) {
   //Format the text
   function formattextanddisplay(response) {
     document.getElementById('textInput').value = "";
-    document.getElementById("mainText").textContent = response;
+    $("#mainText")[0].textContent = response;
     
     if(response.length > 150) {
       document.getElementById("mainText").style.fontSize = "14px";
@@ -71,24 +72,11 @@ export default function Home({ isConnected }) {
   useEffect(() => {
     $(".mbsc-textfield-inner-box").on("click", (e) => {
       $(".mbsc-popup-button-primary").on("click", (e) => {
-        let language = $(".mbsc-selected")[1].parentElement.outerText;
+        language = $(".mbsc-selected")[1].parentElement.outerText;
         if(language.search("TRIAL") != -1) language = language.replace("TRIAL\n", "");
-        console.log(language);
-        $("#translateButton").textContent = `Translate to ${language}`;
+        $("#translateButton")[0].textContent = `Translate to ${language}`;
       });
     });
-
-
-
-    //
-
-/*     document.addEventListener("click", (e) => {
-      if(e.srcElement.childNodes[0] && e.srcElement.childNodes[0].textContent == "Set") {
-        console.log($(".mbsc-textfield").value);
-        console.log($(".mbsc-selected").textContent);
-        $("#translateButton").textContent = `Translate to ${$(".mbsc-textfield").value}`;
-      }
-    }); */
   })
 
   const handleRetryClick = (e) =>  {
@@ -101,10 +89,10 @@ export default function Home({ isConnected }) {
     if ($(".mbsc-textfield").value == "") {
       doAiStuff("Repeat the folowing sentence: Please select a country first before trying to translate");
     } else {
-      if(document.getElementById('textInput').value == "") {
-        doAiStuff(`Translate the folowing into the ${$(".mbsc-textfield").value} language: ` + document.getElementById("mainText").innerText);
+      if($("#textInput")[0].value == "") {
+        doAiStuff(`Translate the text after the colon into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#mainText")[0].lastChild.textContent}`);
       } else {
-        doAiStuff(`Translate the folowing into the ${$(".mbsc-textfield").value} language: ` + document.getElementById("textInput").value);
+        doAiStuff(`Translate the text after the colon into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#textInput")[0].value}`);
       }
     }
   }
@@ -118,7 +106,7 @@ export default function Home({ isConnected }) {
   function showPage() {
     document.getElementById("loader").style.display = "none";
     document.getElementById("mainDiv").style.display = "block";
-    document.getElementById("secondaryButton").style.display = "block";
+    //document.getElementById("secondaryButton").style.display = "block";
     document.getElementById("copyButton").style.display = "block"; 
     document.getElementById("translateButton").style.display = "block";
   }
@@ -126,8 +114,6 @@ export default function Home({ isConnected }) {
     document.getElementById("loader").style.display = "block";
     document.getElementById("mainDiv").style.display = "none";
   }
-
-
 
   //HTML
   return (
@@ -138,11 +124,13 @@ export default function Home({ isConnected }) {
       </Head>
       <div id="loader" className={styles.loader}></div>
       <div id="mainDiv" className={styles.mainDiv}>
-        <pre>
-          <code id="mainText" className={styles.mainText}>
-            What do you want to know?
-          </code>
-        </pre>
+        <div id="textDiv">
+          <pre>
+            <code id="mainText" className={styles.mainText}>
+              What do you want to know?
+            </code>
+          </pre>
+        </div>
         <div id="inputbox">
           <input type="text" onKeyDown={keyDown} id="textInput"></input>
         </div>
