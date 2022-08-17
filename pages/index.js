@@ -9,6 +9,7 @@ import hljs from "highlight.js";
 import { useEffect } from 'react';
 import { Select } from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import Darkmode from 'darkmode-js';
 
 //Configuration for the OpenAI Api module
 const configuration = new Configuration({
@@ -21,6 +22,8 @@ export default function Home({ isConnected }) {
   //The inputtet text
   let inputText;
   let language; 
+
+  new Darkmode().showWidget();
 
   //Communication with the server
   async function doAiStuff(phrase) {
