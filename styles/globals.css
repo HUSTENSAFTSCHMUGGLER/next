@@ -38,11 +38,6 @@ form {
     text-align: center;
 }
 
-button:hover {
-    opacity: .8;
-    cursor: pointer;
-  }
-
 #button-container {
     padding-top: 10px;
     display: flex;

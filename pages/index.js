@@ -146,10 +146,10 @@ export default function Home({ isConnected }) {
           <input type="text" onKeyDown={keyDown} id="textInput"></input>
         </div>
         <div id="button-container" className={styles.buttonscontainer}>
-          <button type="submit" onClick={handleClick}>Submit</button>
-          <button id="secondaryButton" className={styles.secondaryButton} type="submit" onClick={handleRetryClick}>Retry</button>
-          <button id="copyButton" className={styles.copyButton} type="submit" onClick={handleCopyClick}>Copy</button>
-          <button id="translateButton" className={styles.translateButton} type="submit" onClick={handleTranslateClick}>Translate</button>
+          <button className={styles.buttonStyle} type="submit" onClick={handleClick}>Submit</button>
+          <button id="secondaryButton" className={`${styles.secondaryButton} ${styles.buttonStyle}`} type="submit" onClick={handleRetryClick}>Retry</button>
+          <button id="copyButton" className={`${styles.copyButton} ${styles.buttonStyle}`} type="submit" onClick={handleCopyClick}>Copy</button>
+          <button id="translateButton" className={`${styles.translateButton} ${styles.buttonStyle}`} type="submit" onClick={handleTranslateClick}>Translate</button>
           <div id="languagesSelector">
             <Select id="languages" data={languages} label="Countries" filter={true} theme="material" themeVariant="light"
               responsive={{
