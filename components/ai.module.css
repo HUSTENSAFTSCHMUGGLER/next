@@ -80,3 +80,42 @@
   display: none;
 }
 
+.buttonStyle {
+  border-radius: 20px;
+  border: 1px solid #FF4B2B;
+  background-color: #FF4B2B;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  margin-top: 25px;
+  margin-bottom: -10px;
+  margin: 5px 5px;
+  font-size: clamp(10px, 0.6rem, 12px);
+  height: 38px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: clamp(10px, 4vw, 35px);
+  padding-right: clamp(10px, 4vw, 35px);
+}
+
+.buttonStyle:active {
+      transform: scale(0.95);
+  }
+
+  .buttonStyle:hover {
+      opacity: .8;
+      cursor: pointer;
+  }
+
+  .buttonStyle:focus {
+      outline: none;
+  }
+
+  .buttonStyle.ghost {
+      background-color: transparent;
+      border-color: #FFFFFF;
+  }

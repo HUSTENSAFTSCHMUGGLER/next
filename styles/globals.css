@@ -57,11 +57,11 @@ form {
 
 .mbsc-material.mbsc-textfield-box.mbsc-select {
     border-radius: 20px;
-    background: #eee !important;
+    background: transparent;
 }
 
 .mbsc-material.mbsc-textfield-inner-box {
-    background: white !important;
+    background: transparent !important;
     border-radius: 20px;
 }
 
@@ -88,6 +88,7 @@ form {
 
 #inputbox {
     margin: 0 5px;
+    max-width: 100%;
 }
 
 .mbsc-material.mbsc-select.mbsc-ltr {
@@ -107,4 +108,9 @@ form {
 .mbsc-material-dark.mbsc-textfield {
     height: 50px !important;
     font-size: 18px !important;
+}
+
+.darkmode-class {
+    background-color: #333333 !important;
+    color: white;
 }

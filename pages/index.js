@@ -22,8 +22,19 @@ export default function Home({ isConnected }) {
   //The inputtet text
   let inputText;
   let language; 
-
-  new Darkmode().showWidget();
+  const options = {
+    time: '0.5s', // default: '0.3s'
+    mixColor: 'white', // default: '#fff'
+    backgroundColor: '#242424',  // default: '#fff'
+    buttonColorDark: '#FF4B2B',  // default: '#100f2c'
+    buttonColorLight: '#100f2c', // default: '#fff'
+    saveInCookies: false, // default: true,
+    label: '🌓', // default: ''
+    autoMatchOsTheme: true // default: true
+  }
+   
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
 
   //Communication with the server
   async function doAiStuff(phrase) {
@@ -73,6 +84,20 @@ export default function Home({ isConnected }) {
   }
 
   useEffect(() => {
+    $(".darkmode-layer").css("mix-blend-mode", "unset");
+    $(".darkmode-layer--button").css("right", "33px");
+    $(".darkmode-layer--button").css("bottom", "33px");
+    $(".darkmode-toggle").css("padding-bottom", "4px");
+    $(".darkmode-toggle").css("fontSize", "20px");
+    
+    $(".darkmode-toggle").on("click", (e) => {
+      if($("body").hasClass("darkmode--activated")) {
+        $(".container").removeClass("darkmode-class");
+      } else {
+        $(".container").addClass("darkmode-class");
+      }      
+    })
+
     $(".mbsc-textfield-inner-box").on("click", (e) => {
       $(".mbsc-scroller-wheel-item").on("click", (e) => {
         language = e.currentTarget.innerText;
@@ -85,6 +110,10 @@ export default function Home({ isConnected }) {
         $("#translateButton")[0].textContent = `Translate to ${language}`;
       });
     });
+
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      $(".container").addClass("darkmode-class");
+    }
   })
 
   const handleRetryClick = (e) =>  {
@@ -98,8 +127,16 @@ export default function Home({ isConnected }) {
       doAiStuff("Repeat the folowing sentence: Please select a country first before trying to translate");
     } else {
       if($("#textInput")[0].value == "") {
+/*         console.log("No Text Input");
+        console.log($("#mainText")[0].lastChild.textContent);
+        console.log($("#textInput")[0].value == "");
+        console.log($(".mbsc-textfield")[0].attributes[1].textContent); */
         doAiStuff(`Translate following into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#mainText")[0].lastChild.textContent}`);
       } else {
+/*         console.log("Text Input");
+        console.log($("#mainText")[0].lastChild.textContent);
+        console.log($("#textInput")[0].value == "");
+        console.log($(".mbsc-textfield")[0].attributes[1].textContent); */
         doAiStuff(`Translate following into the ${$(".mbsc-textfield")[0].attributes[1].textContent} language: ${$("#textInput")[0].value}`);
       }
     }
@@ -138,7 +175,7 @@ export default function Home({ isConnected }) {
         <div id="textDiv">
           <pre>
             <code id="mainText" className={styles.mainText}>
-              What do you want to know?
+              What do you want to know? Ask the AI!
             </code>
           </pre>
         </div>
