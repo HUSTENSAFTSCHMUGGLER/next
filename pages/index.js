@@ -14,8 +14,7 @@ import Darkmode from 'darkmode-js';
 //Configuration for the OpenAI Api module
 const configuration = new Configuration({
   //Remove and uncomment the code bellow when going Viral
-  apiKey: "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",
-  //apiKey: process.env.OPEN_AI_KEY,
+  apiKey: process.env.OPEN_AI_KEY
 });
 
 export default function Home({ isConnected }) {
