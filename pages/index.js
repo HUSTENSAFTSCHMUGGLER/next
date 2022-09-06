@@ -10,12 +10,12 @@ import { useEffect } from 'react';
 import { Select } from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import Darkmode from 'darkmode-js';
-var paperspace_node = require("paperspace-node");
+//var paperspace_node = require("paperspace-node");
 import Swal from 'sweetalert2'
 
-var paperspace = paperspace_node({
-  apiKey: "264141ff5cf62edf90ce0ae353a7f7", // <- paste your api key here
-});
+/* var paperspace = paperspace_node({
+  apiKey: process.env.PAPERSPACE // <- paste your api key here
+}); */
 
 //Configuration for the OpenAI Api module
 const configuration = new Configuration({
@@ -89,7 +89,7 @@ export default function Home({ isConnected }) {
   }
 
   useEffect(() => {
-    paperspace.machines.start(
+/*     paperspace.machines.start(
       {
         machineId: "ps0m28rq9",
       },
@@ -99,7 +99,7 @@ export default function Home({ isConnected }) {
           title: err.message
         })
       }
-    );
+    ); */
 
     $(".darkmode-layer").css("mix-blend-mode", "unset");
     $(".darkmode-layer--button").css("right", "33px");
