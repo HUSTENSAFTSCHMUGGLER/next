@@ -2,7 +2,7 @@
 
 MY OWN WEBPAGE WITH AI INTEGRATET
 
-🤖🔥🤖🔥🤖🔥🤖🔥🤖🔥🤖🔥🤖w
+🤖🔥🤖🔥🤖🔥🤖🔥🤖🔥🤖🔥🤖
 
 
 
