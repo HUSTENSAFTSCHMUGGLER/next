@@ -20,7 +20,7 @@ import Swal from 'sweetalert2'
 //Configuration for the OpenAI Api module
 const configuration = new Configuration({
   //Remove and uncomment the code bellow when going Viral
-  apiKey: process.env.OPEN_AI_KEY;
+  apiKey: process.env.OPEN_AI_KEY
 });
 
 export default function Home({ isConnected }) {
