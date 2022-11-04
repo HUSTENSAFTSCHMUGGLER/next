@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+/*import React, { useEffect } from 'react'
 import { getProviders, getSession } from 'next-auth/react'
 import BtnLogin from '../components/btn'
 import Router from 'next/router'
@@ -89,4 +89,4 @@ Login.getInitialProps = async (context) => {
     }
 }
 
-export default Login
+export default Login*/
