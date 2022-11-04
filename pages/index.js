@@ -65,7 +65,7 @@ export default function Home({ isConnected }) {
    async function createImage() {
     showLoader();
     const openai = new OpenAIApi(configuration);
-    let textPrompt = ${$("#mainText")[0].lastChild.textContent};
+    let textPrompt = $("#textInput")[0].value;
     const response = await openai.createImage({
         prompt: textPrompt,
         n: 1,
