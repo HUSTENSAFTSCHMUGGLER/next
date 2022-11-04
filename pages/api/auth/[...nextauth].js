@@ -1,4 +1,4 @@
-// pages/api/auth/[...nextauth].js
+/* // pages/api/auth/[...nextauth].js
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
@@ -32,4 +32,4 @@ export default NextAuth({
     },
     secret: process.env.MY_SECRET,
     database: process.env.MONGODB_URI
-})
+}) */
