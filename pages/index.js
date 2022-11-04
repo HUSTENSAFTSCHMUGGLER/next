@@ -221,7 +221,7 @@ export default function Home({ isConnected }) {
           <button id="secondaryButton" className={`${styles.secondaryButton} ${styles.buttonStyle}`} type="submit" onClick={handleRetryClick}>Retry</button>
           <button id="copyButton" className={`${styles.copyButton} ${styles.buttonStyle}`} type="submit" onClick={handleCopyClick}>Copy</button>
           <button id="translateButton" className={`${styles.translateButton} ${styles.buttonStyle}`} type="submit" onClick={handleTranslateClick}>Translate</button>
-          <button id="createImageButton" className={`${styles.translateButton} ${styles.buttonStyle}`} type="submit" onClick={handleCreateImageClick}>Translate</button>
+          <button id="createImageButton" className={`${styles.translateButton} ${styles.buttonStyle}`} type="submit" onClick={handleCreateImageClick}>Create Image</button>
           <div id="languagesSelector">
             <Select id="languages" data={languages} label="Countries" filter={true} theme="material" themeVariant="light"
               responsive={{
