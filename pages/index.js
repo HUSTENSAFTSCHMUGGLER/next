@@ -20,7 +20,7 @@ import Swal from 'sweetalert2'
 //Configuration for the OpenAI Api module
 const configuration = new Configuration({
   //Remove and uncomment the code bellow when going Viral
-  apiKey: process.env.OPEN_AI_KEY
+  apiKey: process.env.OPEN_AI_KEY;
 });
 
 export default function Home({ isConnected }) {
@@ -114,7 +114,8 @@ export default function Home({ isConnected }) {
         })
       }
     ); */
-
+    console.log(process.env.OPEN_AI_KEY.substring(0, 5));
+    
     $(".darkmode-layer").css("mix-blend-mode", "unset");
     $(".darkmode-layer--button").css("right", "33px");
     $(".darkmode-layer--button").css("bottom", "33px");
