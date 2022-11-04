@@ -61,6 +61,20 @@ export default function Home({ isConnected }) {
     formattextanddisplay(response.data.choices[0].text.trimLeft());
     showPage();
   }
+  
+   async function createImage() {
+    showLoader();
+    const openai = new OpenAIApi(configuration);
+    let textPrompt = ${$("#mainText")[0].lastChild.textContent};
+    const response = await openai.createImage({
+        prompt: textPrompt,
+        n: 1,
+        size: "1024x1024",
+    });
+    
+    $("#mainText")[0].textContent = response.data.data[0].url;
+    showPage();
+  }
 
   //Format the text
   function formattextanddisplay(response) {
@@ -139,6 +153,9 @@ export default function Home({ isConnected }) {
   const handleCopyClick = (e) =>  {
     navigator.clipboard.writeText(document.getElementById("mainText").innerText);
   }
+  const handleCreateImageClick = (e) =>  {
+    createImage();
+  }
   const handleTranslateClick = (e) =>  {
     if ($(".mbsc-textfield")[0].attributes[1].textContent == "") {
       doAiStuff("Repeat the folowing sentence: Please select a country first before trying to translate");
@@ -204,6 +221,7 @@ export default function Home({ isConnected }) {
           <button id="secondaryButton" className={`${styles.secondaryButton} ${styles.buttonStyle}`} type="submit" onClick={handleRetryClick}>Retry</button>
           <button id="copyButton" className={`${styles.copyButton} ${styles.buttonStyle}`} type="submit" onClick={handleCopyClick}>Copy</button>
           <button id="translateButton" className={`${styles.translateButton} ${styles.buttonStyle}`} type="submit" onClick={handleTranslateClick}>Translate</button>
+          <button id="createImageButton" className={`${styles.translateButton} ${styles.buttonStyle}`} type="submit" onClick={handleCreateImageClick}>Translate</button>
           <div id="languagesSelector">
             <Select id="languages" data={languages} label="Countries" filter={true} theme="material" themeVariant="light"
               responsive={{
